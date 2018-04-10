@@ -19,12 +19,28 @@ const transitions = [
     {
         name: "characterSelect",
         state: new Select(),
-        nextScreenName: () => "game",
+        nextScreenName: state => {
+            if (state.transient.home) {
+                state.transient.home = false;
+                return "home";
+            }
+            return "game";
+        },
     },
     {
         name: "game",
         state: new GameTest(),
-        nextScreenName: () => "results",
+        nextScreenName: state => {
+            if (state.transient.home) {
+                state.transient.home = false;
+                return "home";
+            }
+            if (state.transient.restart) {
+                state.transient.restart = false;
+                return "game";
+            }
+            return "results";
+        },
     },
     {
         name: "results",
