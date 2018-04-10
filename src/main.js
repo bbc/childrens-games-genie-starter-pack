@@ -1,5 +1,6 @@
 import { Home } from "../node_modules/genie/src/components/home.js";
 import { Loadscreen } from "../node_modules/genie/src/components/loadscreen.js";
+import { Select } from "../node_modules/genie/src/components/select.js";
 import { GameTest } from "../node_modules/genie/src/components/test-harness/test-screens/game.js";
 import { ResultsTest } from "../node_modules/genie/src/components/test-harness/test-screens/results.js";
 import { startup } from "../node_modules/genie/src/core/startup.js";
@@ -13,12 +14,33 @@ const transitions = [
     {
         name: "home",
         state: new Home(),
-        nextScreenName: () => "game",
+        nextScreenName: () => "characterSelect",
+    },
+    {
+        name: "characterSelect",
+        state: new Select(),
+        nextScreenName: state => {
+            if (state.transient.home) {
+                state.transient.home = false;
+                return "home";
+            }
+            return "game";
+        },
     },
     {
         name: "game",
         state: new GameTest(),
-        nextScreenName: () => "results",
+        nextScreenName: state => {
+            if (state.transient.home) {
+                state.transient.home = false;
+                return "home";
+            }
+            if (state.transient.restart) {
+                state.transient.restart = false;
+                return "game";
+            }
+            return "results";
+        },
     },
     {
         name: "results",
