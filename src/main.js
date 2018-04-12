@@ -1,6 +1,6 @@
 import { Home } from "../node_modules/genie/src/components/home.js";
 import { Loadscreen } from "../node_modules/genie/src/components/loadscreen.js";
-// import { Select } from "../node_modules/genie/src/components/select.js";
+import { Select } from "../node_modules/genie/src/components/select.js";
 import { BalloonPumpGame } from "./components/balloon-pump-game.js";
 import { Results } from "../node_modules/genie/src/components/results.js";
 import { startup } from "../node_modules/genie/src/core/startup.js";
@@ -14,20 +14,19 @@ const transitions = [
     {
         name: "home",
         state: new Home(),
-        nextScreenName: () => "game",
-        // nextScreenName: () => "characterSelect",
+        nextScreenName: () => "characterSelect",
     },
-    // {
-    //     name: "characterSelect",
-    //     state: new Select(),
-    //     nextScreenName: state => {
-    //         if (state.transient.home) {
-    //             state.transient.home = false;
-    //             return "home";
-    //         }
-    //         return "game";
-    //     },
-    // },
+    {
+        name: "characterSelect",
+        state: new Select(),
+        nextScreenName: state => {
+            if (state.transient.home) {
+                state.transient.home = false;
+                return "home";
+            }
+            return "game";
+        },
+    },
     {
         name: "game",
         state: new BalloonPumpGame(),
