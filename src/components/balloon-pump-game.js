@@ -30,7 +30,7 @@ export class BalloonPumpGame extends Screen {
     }
 
     update() {
-        if (this.balloonButton.width >= 250) {
+        if (this.balloonButton.width >= 240) {
             this.next({ transient: { resultsData: "Finished with " + this.getTimeLeft() + " seconds left!" } });
         } else if (this.balloonButton.width > 74 && this.balloonButton.height > 122) {
             this.balloonButton.width -= 1;
@@ -50,25 +50,25 @@ export class BalloonPumpGame extends Screen {
     createTimer() {
         this.timer = this.game.time.create();
         this.timerEvent = this.timer.add(Phaser.Timer.SECOND * 15, this.gameLost, this);
-        this.timeLeftText = this.game.add.text(0, -150, this.getTimeLeftString(), this.theme.timer.style);
+        this.timeLeftText = this.game.add.text(-340, 230, this.getTimeLeftString(), this.theme.timer.style);
         this.layoutFactory.addToBackground(this.timeLeftText);
         this.timer.start();
     }
 
     createGameFurniture() {
-        const pumpSprite = this.game.add.sprite(-90, 150, this.keyLookup.pump);
+        const pumpSprite = this.game.add.sprite(-70, 190, this.keyLookup.pump);
         this.layoutFactory.addToBackground(pumpSprite);
 
-        const text = this.game.add.text(0, -190, this.theme.text.content, this.theme.text.style);
+        const text = this.game.add.text(0, -170, this.theme.text.content, this.theme.text.style);
         this.layoutFactory.addToBackground(text);
     }
 
     createBalloon() {
-        this.balloonButton = this.game.add.button(0, 0, this.keyLookup.balloon, this.balloonTapped, this, 2, 1, 0);
-        // this.balloonButton.anchor.setTo(1, 0.5);
+        this.balloonButton = this.game.add.button(-10, 110, this.keyLookup.balloon, this.balloonTapped, this, 2, 1, 0);
         this.balloonButton.width = 74;
         this.balloonButton.height = 122;
         this.layoutFactory.addToBackground(this.balloonButton);
+        this.balloonButton.anchor.setTo(0.5, 1);
     }
 
     balloonTapped() {
