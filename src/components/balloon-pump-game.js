@@ -7,7 +7,6 @@ export class BalloonPumpGame extends Screen {
 
     preload() {
         this.keyLookup = this.layoutFactory.keyLookups[this.game.state.current];
-        // this.selectedSeason = this.context.inState.transient.option && this.context.inState.transient.option === 1 ? "winter" : "summer";
     }
 
     create() {

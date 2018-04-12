@@ -10,7 +10,6 @@ const transitions = [
         name: "loadscreen",
         state: new Loadscreen(),
         nextScreenName: () => "home",
-        // nextScreenName: () => "game",
     },
     {
         name: "home",
