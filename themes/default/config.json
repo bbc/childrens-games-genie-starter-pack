@@ -24,14 +24,6 @@
             }
         },
         "game" : {
-            "button": {
-                "content": "Tap Here",
-                "style": {
-                    "font": "20px Arial",
-                    "fontWeight": "bold",
-                    "fill": "white"
-                }
-            },
             "text": {
                 "content": "Quick! Tap to pump up the balloon",
                 "style": {
@@ -45,7 +37,12 @@
                     "font": "30px Arial",
                     "fontWeight": "bold",
                     "fill": "#FFFFFF"
-                }
+                },
+                "position": { "x": -270, "y": 230 }
+            },
+            "gameButton": {
+                "position": { "x": -10, "y": 110 },
+                "size" : { "x": 74, "y": 122 }
             }
         },
         "results": {

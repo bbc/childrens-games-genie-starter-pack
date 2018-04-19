@@ -49,7 +49,7 @@ export class BalloonPumpGame extends Screen {
     createTimer() {
         this.timer = this.game.time.create();
         this.timerEvent = this.timer.add(Phaser.Timer.SECOND * 15, this.gameLost, this);
-        this.timeLeftText = this.game.add.text(-270, 230, this.getTimeLeftString(), this.theme.timer.style);
+        this.timeLeftText = this.game.add.text(this.theme.timer.position.x, this.theme.timer.position.y, this.getTimeLeftString(), this.theme.timer.style);
         this.layoutFactory.addToBackground(this.timeLeftText);
         this.timer.start();
     }
@@ -63,9 +63,9 @@ export class BalloonPumpGame extends Screen {
     }
 
     createBalloon() {
-        this.balloonButton = this.game.add.button(-10, 110, this.keyLookup.balloon, this.balloonTapped, this, 2, 1, 0);
-        this.balloonButton.width = 74;
-        this.balloonButton.height = 122;
+        this.balloonButton = this.game.add.button(this.theme.gameButton.position.x, this.theme.gameButton.position.y, this.keyLookup.balloon, this.balloonTapped, this, 2, 1, 0);
+        this.balloonButton.width = this.theme.gameButton.size.x;
+        this.balloonButton.height = this.theme.gameButton.size.y;
         this.layoutFactory.addToBackground(this.balloonButton);
         this.balloonButton.anchor.setTo(0.5, 1);
     }
