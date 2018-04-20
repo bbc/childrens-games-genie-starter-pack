@@ -52,7 +52,7 @@ export class ClickProgressionGame extends Screen {
         const pumpSprite = this.game.add.sprite(-70, 190, this.keyLookup.pump);
         this.layoutFactory.addToBackground(pumpSprite);
 
-        const text = this.game.add.text(0, -170, this.theme.text.content, this.theme.text.style);
+        const text = this.game.add.text(this.theme.text.position.x, this.theme.text.position.y, this.theme.text.content, this.theme.text.style);
         this.layoutFactory.addToBackground(text);
     }
 
