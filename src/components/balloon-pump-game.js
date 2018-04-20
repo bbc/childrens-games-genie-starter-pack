@@ -13,27 +13,21 @@ export class BalloonPumpGame extends Screen {
         const centerX = this.game.world.centerX;
         const centerY = this.game.world.centerY;
         this.theme = this.context.config.theme[this.game.state.current];
+        this.selectedCharacter = this.context.inState.transient.characterSelect;
+        this.timesButtonClicked = 0;
 
         this.addBackground();
         this.createTimer(centerX);
         this.createGameFurniture(centerX, centerY);
-        this.createBalloon(centerX, centerY);
+        this.createGameButton(centerX, centerY);
 
         this.layoutFactory.addLayout(["home", "pause", "audioOff", "settings"]);
+
     }
 
     render() {
         if (this.timer.running) {
             this.timeLeftText.setText(this.getTimeLeftString());
-        }
-    }
-
-    update() {
-        if (this.balloonButton.width >= 240) {
-            this.next({ transient: { resultsData: "Finished with " + this.getTimeLeft() + " seconds left!" } });
-        } else if (this.balloonButton.width > 74 && this.balloonButton.height > 122) {
-            this.balloonButton.width -= 1;
-            this.balloonButton.height -= 1;
         }
     }
 
@@ -62,17 +56,21 @@ export class BalloonPumpGame extends Screen {
         this.layoutFactory.addToBackground(text);
     }
 
-    createBalloon() {
-        this.balloonButton = this.game.add.button(this.theme.gameButton.position.x, this.theme.gameButton.position.y, this.keyLookup.balloon, this.balloonTapped, this, 2, 1, 0);
-        this.balloonButton.width = this.theme.gameButton.size.x;
-        this.balloonButton.height = this.theme.gameButton.size.y;
-        this.layoutFactory.addToBackground(this.balloonButton);
-        this.balloonButton.anchor.setTo(0.5, 1);
+    createGameButton() {
+        const buttonPos = this.theme.gameButton.position;
+        const buttonImage = this.keyLookup["game_button_" + this.selectedCharacter +"_0"];
+        this.gameButton = this.game.add.button(buttonPos.x, buttonPos.y, buttonImage, this.gameButtonClicked, this, 2, 1, 0);
+        this.layoutFactory.addToBackground(this.gameButton);
+        this.gameButton.anchor.setTo(this.theme.gameButton.anchor.x, this.theme.gameButton.anchor.y);
     }
 
-    balloonTapped() {
-        this.balloonButton.width += 20;
-        this.balloonButton.height += 20;
+    gameButtonClicked() {
+        this.timesButtonClicked += 1;
+        if (this.timesButtonClicked === 10) {
+            this.next({ transient: { resultsData: "Finished with " + this.getTimeLeft() + " seconds left!" } });
+        } else {
+            this.gameButton.loadTexture(this.keyLookup["game_button_" + this.selectedCharacter +"_" + this.timesButtonClicked], 0);
+        }
     }
 
     getTimeLeft() {
