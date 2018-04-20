@@ -30,7 +30,8 @@
                     "font": "40px Arial",
                     "fontWeight": "bold",
                     "fill": "#FFFFFF"
-                }
+                },
+                "position": { "x": 0, "y": -170 }
             },
             "timer": {
                 "style": {
@@ -41,8 +42,8 @@
                 "position": { "x": -270, "y": 230 }
             },
             "gameButton": {
-                "position": { "x": -10, "y": 110 },
-                "size" : { "x": 74, "y": 122 }
+                "position": { "x": -5, "y": 110 },
+                "anchor" : { "x": 0.5, "y": 1 }
             }
         },
         "results": {
