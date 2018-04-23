@@ -14,10 +14,10 @@ const transitions = [
     {
         name: "home",
         state: new Home(),
-        nextScreenName: () => "characterSelect",
+        nextScreenName: () => "game-button-select",
     },
     {
-        name: "characterSelect",
+        name: "game-button-select",
         state: new Select(),
         nextScreenName: state => {
             if (state.transient.home) {
