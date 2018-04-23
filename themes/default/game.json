@@ -8,12 +8,6 @@
         },
         {
             "type": "image",
-            "key": "pump",
-            "url": "game/pump.png",
-            "overwrite": false
-        },
-        {
-            "type": "image",
             "key": "game_button_1_0",
             "url": "game/balloon_1_0.png",
             "overwrite": false

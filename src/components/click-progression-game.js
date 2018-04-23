@@ -18,7 +18,7 @@ export class ClickProgressionGame extends Screen {
 
         this.addBackground();
         this.createTimer(centerX);
-        this.createGameFurniture(centerX, centerY);
+        this.createTitleText(centerX, centerY);
         this.createGameButton(centerX, centerY);
 
         this.layoutFactory.addLayout(["home", "pause", "audioOff", "settings"]);
@@ -48,10 +48,7 @@ export class ClickProgressionGame extends Screen {
         this.timer.start();
     }
 
-    createGameFurniture() {
-        const pumpSprite = this.game.add.sprite(-70, 190, this.keyLookup.pump);
-        this.layoutFactory.addToBackground(pumpSprite);
-
+    createTitleText() {
         const text = this.game.add.text(this.theme.text.position.x, this.theme.text.position.y, this.theme.text.content, this.theme.text.style);
         this.layoutFactory.addToBackground(text);
     }
@@ -59,7 +56,6 @@ export class ClickProgressionGame extends Screen {
     createGameButton() {
         const buttonPos = this.theme.gameButton.position;
         const buttonImage = this.keyLookup["game_button_" + this.selectedGameButton +"_0"];
-        console.log("game_button_" + this.selectedGameButton +"_0");
         this.gameButton = this.game.add.button(buttonPos.x, buttonPos.y, buttonImage, this.gameButtonClicked, this, 2, 1, 0);
         this.layoutFactory.addToBackground(this.gameButton);
         this.gameButton.anchor.setTo(this.theme.gameButton.anchor.x, this.theme.gameButton.anchor.y);

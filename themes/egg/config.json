@@ -41,7 +41,7 @@
                 "position": { "x": -270, "y": 230 }
             },
             "gameButton": {
-                "position": { "x": -5, "y": 110 },
+                "position": { "x": -5, "y": 200 },
                 "anchor" : { "x": 0.5, "y": 1 }
             }
         },
