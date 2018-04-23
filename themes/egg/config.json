@@ -24,13 +24,13 @@
         },
         "game" : {
             "text": {
-                "content": "Quick! Tap to hatch the egg",
+                "content": "Hatch the egg!",
                 "style": {
                     "font": "40px Arial",
                     "fontWeight": "bold",
                     "fill": "#FFFFFF"
                 },
-                "position": { "x": 0, "y": -170 }
+                "position": { "x": -250, "y": -170 }
             },
             "timer": {
                 "style": {
