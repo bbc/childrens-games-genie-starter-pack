@@ -3,8 +3,7 @@
         "game-button-select": {
             "choices": [
                 { "main": "carousel_1" },
-                { "main": "carousel_2" },
-                { "main": "carousel_3" }
+                { "main": "carousel_2" }
             ],
             "leftButton": {
                 "content": "Left",
@@ -25,7 +24,7 @@
         },
         "game" : {
             "text": {
-                "content": "Quick! Tap to pump up the balloon",
+                "content": "Quick! Tap to hatch the egg",
                 "style": {
                     "font": "40px Arial",
                     "fontWeight": "bold",

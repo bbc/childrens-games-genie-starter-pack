@@ -17,12 +17,6 @@
             "key": "carousel_2",
             "url": "options/carousel_2.png",
             "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "carousel_3",
-            "url": "options/carousel_3.png",
-            "overwrite": false
         }
     ]
 }
