@@ -13,7 +13,7 @@ export class ClickProgressionGame extends Screen {
         const centerX = this.game.world.centerX;
         const centerY = this.game.world.centerY;
         this.theme = this.context.config.theme[this.game.state.current];
-        this.selectedCharacter = this.context.inState.transient.characterSelect;
+        this.selectedGameButton = this.context.inState.transient["game-button-select"];
         this.timesButtonClicked = 0;
 
         this.addBackground();
@@ -58,7 +58,8 @@ export class ClickProgressionGame extends Screen {
 
     createGameButton() {
         const buttonPos = this.theme.gameButton.position;
-        const buttonImage = this.keyLookup["game_button_" + this.selectedCharacter +"_0"];
+        const buttonImage = this.keyLookup["game_button_" + this.selectedGameButton +"_0"];
+        console.log("game_button_" + this.selectedGameButton +"_0");
         this.gameButton = this.game.add.button(buttonPos.x, buttonPos.y, buttonImage, this.gameButtonClicked, this, 2, 1, 0);
         this.layoutFactory.addToBackground(this.gameButton);
         this.gameButton.anchor.setTo(this.theme.gameButton.anchor.x, this.theme.gameButton.anchor.y);
@@ -69,7 +70,7 @@ export class ClickProgressionGame extends Screen {
         if (this.timesButtonClicked === 10) {
             this.next({ transient: { resultsData: "Finished with " + this.getTimeLeft() + " seconds left!" } });
         } else {
-            this.gameButton.loadTexture(this.keyLookup["game_button_" + this.selectedCharacter +"_" + this.timesButtonClicked], 0);
+            this.gameButton.loadTexture(this.keyLookup["game_button_" + this.selectedGameButton +"_" + this.timesButtonClicked], 0);
         }
     }
 
