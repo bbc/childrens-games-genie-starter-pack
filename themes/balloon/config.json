@@ -3,8 +3,7 @@
         "characterSelect": {
             "choices": [
                 { "main": "carousel_1" },
-                { "main": "carousel_2" },
-                { "main": "carousel_3" }
+                { "main": "carousel_2" }
             ],
             "leftButton": {
                 "content": "Left",
