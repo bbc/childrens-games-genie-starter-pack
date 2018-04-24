@@ -19,7 +19,7 @@ Audio, Animations, Sprites, Graphics and Fonts are in scope for theming. Alterat
 
 ## How does theming work?
 
-There is a `default` theme for components in the `themes` folder that can be copied and renamed with the name of your skin to use as a template. There is also a `balloon` theme so use for comparison. The links to view them locally are here (you will first need to `cd` to the folder and run `npm install` and `npm run start` in a terminal):
+There is a `default` theme for components in the `themes` folder that can be copied and renamed with the name of your skin to use as a template. There is also a `balloon` theme to use for comparison. The links to view them locally are here (you will first need to `cd` to the folder and run `npm install` and `npm run start` in a terminal):
 
 http://localhost:8080/?theme=default
 http://localhost:8080/?theme=balloon
