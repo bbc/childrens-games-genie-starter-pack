@@ -11,18 +11,9 @@
   },
   "homepage": "https://github.com/bbc/childrens-games-genie-starter-pack#readme",
   "dependencies": {
-    "babel-polyfill": "^6.26.0",
-    "expose-loader": "^0.7.5",
-    "genie": "git+ssh://git@github.com/bbc/childrens-games-genie.git#v0.5.0",
-    "npm": "^5.7.1",
-    "phaser-ce": "^2.11.0",
-    "webfontloader": "^1.6.28"
+    "genie": "git+ssh://git@github.com/bbc/childrens-games-genie.git#CGPROD-769-third-party-libraries"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.6.1",
-    "requirejs": "^2.3.5",
     "webpack": "^4.2.0",
     "webpack-cli": "^2.0.12",
     "webpack-dev-server": "^3.1.3",
