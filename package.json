@@ -20,7 +20,7 @@
     "webpack-dev-server": "^3.1.3"
   },
   "scripts": {
-    "start": "ws --static.index node_modules/genie/dev/index.dev.html --log.format tiny",
+    "start": "ws --static.index node_modules/genie/dev/index.dev.html",
     "start:qa": "webpack-dev-server --config node_modules/genie/build-scripts/webpack.config.js",
     "build": "webpack --config node_modules/genie/build-scripts/webpack.config.js",
     "build-watch": "webpack --config node_modules/genie/build-scripts/webpack.config.js --watch"
