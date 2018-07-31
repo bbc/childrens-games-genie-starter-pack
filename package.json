@@ -11,7 +11,7 @@
   },
   "homepage": "https://github.com/bbc/childrens-games-genie-starter-pack#readme",
   "dependencies": {
-    "genie": "git+ssh://git@github.com/bbc/childrens-games-genie.git#CGPROD-769-third-party-libraries"
+    "genie": "git+ssh://git@github.com/bbc/childrens-games-genie.git#v0.6.0"
   },
   "devDependencies": {
     "local-web-server": "^2.5.6",
