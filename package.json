@@ -11,7 +11,7 @@
   },
   "homepage": "https://github.com/bbc/childrens-games-genie-starter-pack#readme",
   "dependencies": {
-    "genie": "git+ssh://git@github.com/bbc/childrens-games-genie.git#v0.6.0"
+    "genie": "git+ssh://git@github.com/bbc/childrens-games-genie.git#c17cd73bf77c57819d6975d10cab75e2e1751e11"
   },
   "devDependencies": {
     "local-web-server": "^2.5.6",
