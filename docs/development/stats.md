@@ -26,10 +26,10 @@ gmi.sendStatsEvent("sublevel", "start", { metadata: "SBL=2~XPL=3~GSI=123456789~L
 
 | eventLabel | Description | Example |
 |------------|----------------------------------|---------|
-| metadata   | Allows extra data to be provided | SBL=2~XPL=3~GSI=123456789~LAU=First |
-| container  | Game type bucket                 | Games-SuperTier-Multiplayer |
-| source     | Resource ID                      | Level One or Baseball Cap |
-| result     | Destination change               | Countername i.e. keepalive.games.gameName.newDestination.page |
+| metadata   | Allows extra data to be provided | `SBL=2~XPL=3~GSI=123456789~LAU=First` |
+| container  | Game type bucket                 | `Games-SuperTier-Multiplayer` |
+| source     | Resource ID                      | `Level One` or `Baseball Cap` |
+| result     | Destination change               | Countername i.e. `keepalive.games.gameName.newDestination.page` |
 
 ## ATI Tag Inspector Chrome plug-in
 
