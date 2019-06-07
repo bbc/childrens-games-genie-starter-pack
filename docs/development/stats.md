@@ -38,10 +38,7 @@ This extension allows us to load up a website and inspect our implementation of 
 You can download it from the Chrome store here - [AT Internet Tag Inspector](https://chrome.google.com/webstore/detail/at-internet-tag-inspector/epdfbeoiphkaeapcohmilhmpdeilgnok).
 
 The tool needs a BBC domain adding before use:
-Go to Settings > domains and add:
-```
-a1.api.bbc.co.uk
-```
+Go to Settings > domains and add: `a1.api.bbc.co.uk`
 
 ## What can we measure?
 
