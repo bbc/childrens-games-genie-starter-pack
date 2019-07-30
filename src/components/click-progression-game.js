@@ -58,7 +58,6 @@ export class ClickProgressionGame extends Screen {
         this.createTitleText(centerX, centerY);
 
         const level = this.transientData["level-select"];
-        gmi.sendStatsEvent(["level", "start"], { source: level.choice.title });
 
         const buttonPos = this.theme.gameButton.position;
         const positions = [
@@ -78,7 +77,7 @@ export class ClickProgressionGame extends Screen {
 
         gmi.setGameData("characterSelected", this.transientData["character-select"]);
         console.log("Data saved to GMI:", gmi.getAllSettings().gameData); // eslint-disable-line no-console
-        gmi.sendStatsEvent("level", "start", {metadata:`SRC=[0]`});
+        gmi.sendStatsEvent("level", "start", { source: level.choice.title });
     }
 
     render() {
