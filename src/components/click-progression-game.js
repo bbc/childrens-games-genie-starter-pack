@@ -70,7 +70,7 @@ export class ClickProgressionGame extends Screen {
             { x: buttonPos.x - 210, y: buttonPos.y },
         ]
 
-    const buttonPositions = positions.slice(0, level.index);
+        const buttonPositions = positions.slice(0, level.index + 1);
 
         this.gameButtons = buttonPositions.map(pos => this.createGameButton(pos.x, pos.y))
 
