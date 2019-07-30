@@ -50,7 +50,7 @@ export class ClickProgressionGame extends Screen {
         const centerX = this.game.world.centerX;
         const centerY = this.game.world.centerY;
         this.theme = this.context.config.theme[this.game.state.current];
-        this.selectedGameButton = this.transientData["character-select"].index;
+        this.selectedGameButton = this.transientData["character-select"].index + 1;
         this.timesButtonClicked = 0;
 
         this.addBackground();
