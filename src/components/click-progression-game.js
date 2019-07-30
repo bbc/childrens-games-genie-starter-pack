@@ -57,7 +57,8 @@ export class ClickProgressionGame extends Screen {
         this.createTimer(centerX);
         this.createTitleText(centerX, centerY);
 
-        const level = this.transientData["level-select"].index;
+        const level = this.transientData["level-select"];
+        gmi.sendStatsEvent(["level", "start"], { source: level.choice.title });
 
         const buttonPos = this.theme.gameButton.position;
         const positions = [
@@ -69,7 +70,7 @@ export class ClickProgressionGame extends Screen {
             { x: buttonPos.x - 210, y: buttonPos.y },
         ]
 
-        const buttonPositions = positions.slice(0, level);
+    const buttonPositions = positions.slice(0, level.index);
 
         this.gameButtons = buttonPositions.map(pos => this.createGameButton(pos.x, pos.y))
 
