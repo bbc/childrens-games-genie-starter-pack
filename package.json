@@ -17,6 +17,7 @@
     "eslint": "^5.16.0",
     "eslint-plugin-local-rules": "^0.1.0",
     "local-web-server": "^2.6.0",
+    "sharp": "^0.23.0",
     "webpack": "^4.35.3",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.4.1"
@@ -26,6 +27,7 @@
     "start:pack": "webpack-dev-server --output-path=\"./output\" --config node_modules/genie/build-scripts/webpack.config.js --env.development",
     "build": "webpack --config node_modules/genie/build-scripts/webpack.config.js",
     "eslint": "eslint . --ignore-pattern lodash --ignore-path .gitignore",
-    "validate": "node node_modules/genie/build-scripts/schemavalidator/validator.js achievement"
+    "validate": "node node_modules/genie/build-scripts/schemavalidator/validator.js achievement",
+    "build-pwa": "node --experimental-modules ./pwa/build-pwa.mjs"
   }
 }
