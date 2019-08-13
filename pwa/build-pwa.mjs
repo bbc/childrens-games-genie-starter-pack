@@ -21,7 +21,9 @@ const manifestTemplate = "pwa/manifest-template.json";
 
 const logError = error => console.log(error);
 
-// TODO this will need to return values from the theme and/or embedvars
+// TODO this will need to return values from the theme and.
+//  Embedvars cannot be accessed by the build.
+// neither can the gmi.
 const getChanges = () => {
   //TODO Things to change - where can we get the app name during the build?
   // name and short_name prob the same? or perhaps wrapped with "BBC GAMES: ####" ?
