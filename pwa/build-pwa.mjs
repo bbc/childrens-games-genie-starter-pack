@@ -12,27 +12,12 @@ import fs from "fs";
  *          - caching of files
  */
 
-// Create PWA Icons
+//sources
 const srcIcon = "pwa/icon.png";
-const outputPath = "pwa/icons/";
-const iconSizes = [512, 384, 192, 152, 144, 128, 96, 72];
-
-const resize = size =>
-  sharp(srcIcon)
-    .resize(size, size)
-    .toFile(`${outputPath}icon-${size}x${size}.png`);
-
-Promise.all(iconSizes.map(resize)).then(() => {
-  console.log("resizing complete");
-});
-
-// Write out manifest
 const manifestTemplate = "pwa/manifest-template.json";
-const manifestOutput = "pwa/manifest.json";
-fs.readFile(manifestTemplate, "utf-8", (err, data) => {
-  if (err) throw err;
 
-  const manifest = JSON.parse(data);
+// TODO this will need to return values from the theme and/or embedvars
+const getChanges = () => {
   //TODO Things to change - where can we get the app name during the build?
   // name and short_name prob the same? or perhaps wrapped with "BBC GAMES: ####" ?
   //
@@ -41,15 +26,42 @@ fs.readFile(manifestTemplate, "utf-8", (err, data) => {
   // theme_color
   // background-color
   // orientation (always landscape currently but potentially need to support in the future)
-  const changes = {
-	name: "BBC GAMES: test_name",
-	short_name: "test name",
-  }
 
-  Object.assign(manifest, changes);
+  return {
+    name: "BBC GAMES: test_name",
+    short_name: "test name"
+  };
+};
 
-  fs.writeFile(manifestOutput, JSON.stringify(manifest), err => {
-    if (err) console.log(err);
-    console.log("manifest written")
-  });
+// Create PWA Icons
+const outputPath = "pwa/";
+
+const iconOutputPath = outputPath + "icons/";
+const iconSizes = [512, 384, 192, 152, 144, 128, 96, 72];
+
+const resize = size =>
+  sharp(srcIcon)
+    .resize(size, size)
+    .toFile(`${iconOutputPath}icon-${size}x${size}.png`);
+
+Promise.all(iconSizes.map(resize)).then(() => {
+  console.log("resizing complete");
+});
+
+//Write Manifest
+fs.readFile(manifestTemplate, "utf-8", (err, data) => {
+  if (err) throw err;
+
+  const manifest = JSON.parse(data);
+
+  Object.assign(manifest, getChanges());
+
+  fs.writeFile(
+    outputPath + "manifest.json",
+    JSON.stringify(manifest, null, 2),
+    err => {
+      if (err) console.log(err);
+      console.log("manifest written");
+    }
+  );
 });
