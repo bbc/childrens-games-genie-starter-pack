@@ -1,5 +1,8 @@
 import sharp from "sharp";
-import fs from "fs";
+import baseFs from "fs";
+
+// fs.promises needs Node 10+
+const fs = baseFs.promises;
 
 /*
  * TODO
@@ -15,6 +18,8 @@ import fs from "fs";
 //sources
 const srcIcon = "pwa/icon.png";
 const manifestTemplate = "pwa/manifest-template.json";
+
+const logError = error => console.log(error);
 
 // TODO this will need to return values from the theme and/or embedvars
 const getChanges = () => {
@@ -44,24 +49,25 @@ const resize = size =>
     .resize(size, size)
     .toFile(`${iconOutputPath}icon-${size}x${size}.png`);
 
-Promise.all(iconSizes.map(resize)).then(() => {
-  console.log("resizing complete");
-});
+const awaitAllResizes = Promise.all(iconSizes.map(resize))
+  .then(() => console.log("resizing complete"))
+  .catch(logError);
+
+const parseJSON = data => JSON.parse(data);
+const stringifyPretty = data => JSON.stringify(data, null, 2);
+const addGameData = template => Object.assign(template, getChanges());
+const saveManifest = json => fs.writeFile(outputPath + "manifest.json", json);
 
 //Write Manifest
-fs.readFile(manifestTemplate, "utf-8", (err, data) => {
-  if (err) throw err;
+const awaitManifest = fs
+  .readFile(manifestTemplate, "utf-8")
+  .then(parseJSON)
+  .then(addGameData)
+  .then(stringifyPretty)
+  .then(saveManifest)
+  .then(() => console.log("manifest saved."))
+  .catch(logError);
 
-  const manifest = JSON.parse(data);
-
-  Object.assign(manifest, getChanges());
-
-  fs.writeFile(
-    outputPath + "manifest.json",
-    JSON.stringify(manifest, null, 2),
-    err => {
-      if (err) console.log(err);
-      console.log("manifest written");
-    }
-  );
-});
+Promise.all([awaitAllResizes, awaitManifest]).then(() =>
+  console.log("PWA files created. Operation complete.")
+);
